@@ -10,7 +10,7 @@ export default function FeaturedProducts() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="mb-10 text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-brand-red">
-            Top Deals on Installments
+            Top Deals on Installments and Cash
           </p>
           <h2 className="mt-1 text-3xl font-extrabold text-brand-dark sm:text-4xl">
             Featured Products

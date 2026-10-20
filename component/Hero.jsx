@@ -22,7 +22,7 @@ const slides = [
     cta: "Shop LED TVs",
   },
   {
-    image: "/herorefi.jpeg",
+    image: "/heroR.jpeg",
     title: "Keep it fresh,",
     highlight: "longer.",
     text: "Single door, double door and side-by-side refrigerators with simple installment plans.",
@@ -30,7 +30,7 @@ const slides = [
     cta: "Shop Refrigerators",
   },
   {
-    image: "/herowash.jpeg",
+    image: "/heroW.jpeg",
     title: "Clean clothes,",
     highlight: "healthy family.",
     text: "Washing machines for every home, with easy monthly payments.",
@@ -38,7 +38,7 @@ const slides = [
     cta: "Shop Washing Machines",
   },
   {
-    image: "/heroac.jpeg",
+    image: "/heroA.jpeg",
     title: "Stay cool",
     highlight: "all summer.",
     text: "Inverter air conditioners with easy installment plans and low advance.",
@@ -46,7 +46,7 @@ const slides = [
     cta: "Shop Air Conditioners",
   },
   {
-    image: "/herophone.jpeg",
+    image: "/heroP.jpeg",
     title: "The latest phones,",
     highlight: "pay monthly.",
     text: "Get your next smartphone on installments with quick verification.",
@@ -55,7 +55,7 @@ const slides = [
   },
 ];
 
-const INTERVAL = 5000; // 5 seconds per slide
+const INTERVAL = 4000; // 5 seconds per slide
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);

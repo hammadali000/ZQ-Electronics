@@ -2,6 +2,8 @@ import "./globals.css";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 import { CartProvider } from "@/component/CartContext";
+import WhatsAppButton from "@/component/WhatsAppButton";
+
 
 export const metadata = {
   title: "ZQ Electronics",
@@ -17,6 +19,8 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </CartProvider>
+                  <WhatsAppButton />
+
       </body>
     </html>
   );

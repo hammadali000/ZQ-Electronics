@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "./CartContext";
+import { DEFAULT_MONTHS } from "../data/plans";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
@@ -12,7 +13,7 @@ export default function ProductCard({ product }) {
   if (!product) return null;
 
   function handleAdd() {
-    addToCart(product.id);
+    addToCart(product.id, DEFAULT_MONTHS);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   }
@@ -20,11 +21,6 @@ export default function ProductCard({ product }) {
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
       <div className="relative aspect-square bg-white">
-        {product.badge && (
-          <span className="absolute left-2 top-2 z-10 rounded-full bg-brand-red px-2.5 py-1 text-[11px] font-bold text-white">
-            {product.badge}
-          </span>
-        )}
         <Image
           src={product.image}
           alt={product.name}
@@ -41,9 +37,7 @@ export default function ProductCard({ product }) {
         <p className="mt-2 text-lg font-extrabold text-brand-blue">
           Rs. {product.price.toLocaleString()}
         </p>
-        <p className="mt-1 text-xs text-slate-500">
-          Advance Rs. {product.advance.toLocaleString()} · {product.months} months
-        </p>
+        <p className="text-xs text-slate-500">Cash price</p>
 
         <div className="mt-4 flex flex-col gap-2">
           <button

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Calculator, MessageCircle } from "lucide-react";
+import { markupRates } from "../data/plans";
 
 export default function InstallmentCalculator() {
   const [price, setPrice] = useState(120000);
@@ -10,7 +11,7 @@ export default function InstallmentCalculator() {
 
   const advanceAmount = Math.round((price * advancePercent) / 100);
   const balance = price - advanceAmount;
-  const markupRate = months === 3 ? 0.05 : months === 6 ? 0.10 : months === 9 ? 0.15 : 0.20;
+const markupRate = markupRates[months];
   const markupAmount = Math.round(balance * markupRate);
   const totalRemainingPayable = balance + markupAmount;
   const monthlyInstallment = Math.round(totalRemainingPayable / months);
@@ -20,8 +21,7 @@ export default function InstallmentCalculator() {
   );
 
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-blue-50/50 py-16">
-      <div className="mx-auto max-w-6xl px-4">
+<section id="calculator" className="bg-gradient-to-b from-slate-50 to-blue-50/50 py-16">      <div className="mx-auto max-w-6xl px-4">
         <div className="mb-10 text-center">
           <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue text-white shadow-md">
             <Calculator size={26} />

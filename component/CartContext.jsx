@@ -5,11 +5,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 const CartContext = createContext(null);
 
 export function CartProvider({ children }) {
-  // items look like: [{ id: "1", qty: 2 }, { id: "5", qty: 1 }]
+  // items look like: [{ id: "1", qty: 2, months: 12 }]
   const [items, setItems] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
-  // Load the saved cart when the site opens
   useEffect(() => {
     try {
       const saved = localStorage.getItem("zq-cart");
@@ -18,7 +17,6 @@ export function CartProvider({ children }) {
     setLoaded(true);
   }, []);
 
-  // Save the cart every time it changes
   useEffect(() => {
     if (!loaded) return;
     try {
@@ -26,19 +24,25 @@ export function CartProvider({ children }) {
     } catch {}
   }, [items, loaded]);
 
-  function addToCart(id) {
+  function addToCart(id, months = 12) {
     setItems((prev) => {
       const found = prev.find((i) => i.id === id);
       if (found) {
-        return prev.map((i) => (i.id === id ? { ...i, qty: i.qty + 1 } : i));
+        return prev.map((i) =>
+          i.id === id ? { ...i, qty: i.qty + 1, months } : i
+        );
       }
-      return [...prev, { id, qty: 1 }];
+      return [...prev, { id, qty: 1, months }];
     });
   }
 
   function changeQty(id, qty) {
     if (qty < 1) return;
     setItems((prev) => prev.map((i) => (i.id === id ? { ...i, qty } : i)));
+  }
+
+  function changePlan(id, months) {
+    setItems((prev) => prev.map((i) => (i.id === id ? { ...i, months } : i)));
   }
 
   function removeFromCart(id) {
@@ -53,7 +57,15 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ items, cartCount, addToCart, changeQty, removeFromCart, clearCart }}
+      value={{
+        items,
+        cartCount,
+        addToCart,
+        changeQty,
+        changePlan,
+        removeFromCart,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
