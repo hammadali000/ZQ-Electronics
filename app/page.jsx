@@ -6,6 +6,8 @@ import InstallmentCalculator from "../component/InstallmentCalculator";
 import HowInstallmentsWork from "../component/HowInstallmentsWork";
 import WhyChooseUs from "../component/WhyChooseUs";
 import Testimonials from "../component/Testimonials";
+import CartContext from "../component/CartContext";
+
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
       <HowInstallmentsWork />
       <WhyChooseUs />
       <Testimonials />
+      <CartContext />
     </main>
   );
 }
